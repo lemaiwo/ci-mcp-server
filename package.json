@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "odata-mcp-proxy": "^1.0.0"
+    "odata-mcp-proxy": "^1.2.0"
   }
 }
