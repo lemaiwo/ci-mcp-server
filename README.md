@@ -88,6 +88,19 @@ The config file (`ci-api-config.json`) exposes the SAP Cloud Integration OData A
 | `AlternativePartners` | list, get, create, update, delete | Additional partner identifiers (DUNS, GLN) mapping to a primary partner |
 | `AuthorizedUsers` | list, get, create, update, delete | Users permitted to send messages on behalf of a specific partner |
 
+### B2B Monitoring
+
+The B2B monitor of Trading Partner Management (API `B2BScenarios` in the `CloudIntegrationAPI` package). Read only.
+
+| Tool | Operations | Description |
+|------|-----------|-------------|
+| `BusinessDocuments` | list, get | B2B interchanges with partners, message types, control numbers and status; navigation to error details, events, payload entries and acknowledgements |
+| `OrphanedInterchanges` | list, get | Interchanges that no TPM agreement matched |
+| `TechnicalAcknowledgements` | get | Technical acknowledgements (AS2 MDN, CONTRL) |
+| `FunctionalAcknowledgements` | get | Functional acknowledgements (997, CONTRL) |
+| `B2BArchivingConfigurations` | get | B2B data archiving configuration of the tenant |
+| `B2BArchivingKeyPerformanceIndicators` | list | Key figures of the B2B archiving runs |
+
 All `_list` tools support OData query parameters: `$filter`, `$select`, `$expand`, `$orderby`, `$top`, `$skip`.
 
 ## Prerequisites

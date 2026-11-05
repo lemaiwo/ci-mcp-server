@@ -670,6 +670,131 @@
             "delete": { "enabled": true,  "requiredScope": "admin" }
           },
           "filterableProperties": ["Pid", "User"]
+        },
+
+        {
+          "entitySet": "BusinessDocuments",
+          "description": "B2B interchange documents — one per business document processed by Trading Partner Management, with sender and receiver partner, message type, control numbers, agreed identifiers and processing status",
+          "category": "b2b-monitoring",
+          "keys": [{ "name": "Id", "type": "string" }],
+          "operations": {
+            "list":   { "enabled": true,  "requiredScope": "read" },
+            "get":    { "enabled": true,  "requiredScope": "read" },
+            "create": { "enabled": false },
+            "update": { "enabled": false },
+            "delete": { "enabled": false }
+          },
+          "filterableProperties": [
+            "Id",
+            "SenderMessageType",
+            "SenderDocumentStandard",
+            "SenderInterchangeControlNumber",
+            "SenderTradingPartnerName",
+            "SenderAdapterType",
+            "ReceiverMessageType",
+            "ReceiverDocumentStandard",
+            "ReceiverInterchangeControlNumber",
+            "ReceiverTradingPartnerName",
+            "ReceiverAdapterType",
+            "ProcessingStatus",
+            "OverallStatus",
+            "StartedAt",
+            "EndedAt",
+            "DocumentCreationTime",
+            "TransactionDocumentType",
+            "AgreementTypeName",
+            "TransactionTypeName",
+            "InterchangeDirection"
+          ],
+          "navigationProperties": [
+            { "name": "LastErrorDetails", "description": "error details of the last failed processing step", "isCollection": false },
+            { "name": "BusinessDocumentProcessingEvents", "description": "processing events of the interchange document", "isCollection": true },
+            { "name": "BusinessDocumentPayloads", "description": "payload entries of the interchange document, without the payload content", "isCollection": true },
+            { "name": "BusinessDocumentNotes", "description": "notes on the interchange document", "isCollection": true },
+            { "name": "CustomObjects", "description": "custom search attributes of the interchange document", "isCollection": true },
+            { "name": "BusinessDocumentExtFields", "description": "extension fields of the interchange document", "isCollection": true },
+            { "name": "BusinessDocumentProtocolHeaders", "description": "protocol headers of the interchange document", "isCollection": true },
+            { "name": "SenderTechnicalAcknowledgement", "description": "technical acknowledgement to the sender", "isCollection": false },
+            { "name": "SenderFunctionalAcknowledgement", "description": "functional acknowledgement to the sender", "isCollection": false },
+            { "name": "ReceiverTechnicalAcknowledgement", "description": "technical acknowledgement from the receiver", "isCollection": false },
+            { "name": "ReceiverFunctionalAcknowledgement", "description": "functional acknowledgement from the receiver", "isCollection": false }
+          ]
+        },
+
+        {
+          "entitySet": "OrphanedInterchanges",
+          "description": "orphaned interchanges — B2B interchanges that no Trading Partner Management agreement matched",
+          "category": "b2b-monitoring",
+          "keys": [{ "name": "Id", "type": "string" }],
+          "operations": {
+            "list":   { "enabled": true,  "requiredScope": "read" },
+            "get":    { "enabled": true,  "requiredScope": "read" },
+            "create": { "enabled": false },
+            "update": { "enabled": false },
+            "delete": { "enabled": false }
+          },
+          "navigationProperties": [
+            { "name": "ErrorDetails", "description": "error details of the orphaned interchange", "isCollection": false },
+            { "name": "BusinessDocumentProcessingEvent", "description": "processing event of the orphaned interchange", "isCollection": true },
+            { "name": "BusinessDocumentPayloads", "description": "payload entries of the orphaned interchange, without the payload content", "isCollection": true },
+            { "name": "BusinessDocumentProtocolHeaders", "description": "protocol headers of the orphaned interchange", "isCollection": true }
+          ]
+        },
+
+        {
+          "entitySet": "TechnicalAcknowledgements",
+          "description": "technical acknowledgements — for example AS2 MDN or EDIFACT CONTRL of a B2B interchange",
+          "category": "b2b-monitoring",
+          "keys": [{ "name": "Id", "type": "string" }],
+          "operations": {
+            "list":   { "enabled": false },
+            "get":    { "enabled": true,  "requiredScope": "read" },
+            "create": { "enabled": false },
+            "update": { "enabled": false },
+            "delete": { "enabled": false }
+          }
+        },
+
+        {
+          "entitySet": "FunctionalAcknowledgements",
+          "description": "functional acknowledgements — for example X12 997 or EDIFACT CONTRL of a B2B interchange",
+          "category": "b2b-monitoring",
+          "keys": [{ "name": "Id", "type": "string" }],
+          "operations": {
+            "list":   { "enabled": false },
+            "get":    { "enabled": true,  "requiredScope": "read" },
+            "create": { "enabled": false },
+            "update": { "enabled": false },
+            "delete": { "enabled": false }
+          }
+        },
+
+        {
+          "entitySet": "B2BArchivingConfigurations",
+          "description": "B2B data archiving configuration of the tenant",
+          "category": "b2b-monitoring",
+          "keys": [{ "name": "TenantName", "type": "string" }],
+          "operations": {
+            "list":   { "enabled": false },
+            "get":    { "enabled": true,  "requiredScope": "read" },
+            "create": { "enabled": false },
+            "update": { "enabled": false },
+            "delete": { "enabled": false }
+          }
+        },
+
+        {
+          "entitySet": "B2BArchivingKeyPerformanceIndicators",
+          "description": "key performance indicators of the B2B data archiving runs",
+          "category": "b2b-monitoring",
+          "keys": [],
+          "operations": {
+            "list":   { "enabled": true,  "requiredScope": "read" },
+            "get":    { "enabled": false },
+            "create": { "enabled": false },
+            "update": { "enabled": false },
+            "delete": { "enabled": false }
+          }
         }
 
       ]
